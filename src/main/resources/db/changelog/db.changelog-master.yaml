@@ -1,26 +1,11 @@
 databaseChangeLog:
   - changeSet:
-      id: 1
-      author: test
+      id: version-v1
+      author: admin
       changes:
-        - createTable:
-            tableName: test
-            columns:
-              - column:
-                  name: id
-                  type: int
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: firstname
-                  type: varchar(50)
-              - column:
-                  name: lastname
-                  type: varchar(50)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: state
-                  type: char(2)
+        - tagDatabase:
+            tag: v1
+
+  - include:
+      file: db.changelog-generated.yaml
+      relativeToChangelogFile: true
