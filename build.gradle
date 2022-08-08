@@ -15,6 +15,8 @@ dependencies {
     testImplementation 'io.quarkus:quarkus-junit5'
     implementation group: 'javax.ws.rs', name: 'javax.ws.rs-api', version: '2.0'
     implementation 'io.quarkus:quarkus-resteasy-reactive'
+    implementation 'io.quarkus:quarkus-liquibase'
+    implementation 'io.quarkus:quarkus-jdbc-postgresql'
 }
 
 group 'com.brightlysoftware'
