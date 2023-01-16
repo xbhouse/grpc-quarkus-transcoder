@@ -4,10 +4,16 @@ option java_multiple_files = true;
 option java_package = "com.transcoder";
 option java_outer_classname = "HelloGrpcProto";
 
+import "google/api/annotations.proto";
+
 package hello;
 
 service HelloGrpc {
-    rpc SayHello (HelloRequest) returns (HelloReply) {}
+    rpc SayHello (HelloRequest) returns (HelloReply) {
+        option (google.api.http) = {
+            get: "/say/{name}"
+        };
+    }
 }
 
 message HelloRequest {
