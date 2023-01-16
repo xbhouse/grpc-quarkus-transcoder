@@ -1,6 +1,5 @@
-package com.brightlysoftware;
+package com.transcoder;
 
-import com.brightlysoftware.HelloGrpc;
 import io.quarkus.grpc.GrpcClient;
 import io.smallrye.mutiny.Uni;
 import javax.ws.rs.GET;
