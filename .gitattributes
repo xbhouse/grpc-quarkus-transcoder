@@ -1,0 +1,3 @@
+src/main/java/* linguist-language=Java
+src/test/* linguist-language=Java
+src/main/docker/* linguist-language=Dockerfile
