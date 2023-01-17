@@ -1,3 +1,4 @@
 src/main/java/* linguist-language=Java
 src/test/* linguist-language=Java
 src/main/docker/* linguist-language=Dockerfile
+src/main/resources/META-INF/resources/index.html linguist-vendored
