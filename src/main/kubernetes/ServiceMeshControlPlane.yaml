@@ -1,0 +1,25 @@
+apiVersion: maistra.io/v2
+kind: ServiceMeshControlPlane
+metadata:
+  name: basic
+  namespace: istio-system
+spec:
+  addons:
+    grafana:
+      enabled: true
+    jaeger:
+      install:
+        storage:
+          type: Memory
+    kiali:
+      enabled: true
+    prometheus:
+      enabled: true
+  gateways:
+    ingress:
+      service:
+        type: ClusterIP
+        ports:
+          - name: http2
+            port: 9000
+            targetPort: 9000
