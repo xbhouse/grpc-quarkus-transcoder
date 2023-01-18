@@ -8,8 +8,8 @@ spec:
     istio: ingressgateway
   servers:
     - port:
-        number: 80
-        name: http2
-        protocol: http
+        number: 9000
+        name: grpc
+        protocol: GRPC
       hosts:
         - "grpc-grpc-testing.apps.cluster-bntzg.bntzg.sandbox1686.opentlc.com"
