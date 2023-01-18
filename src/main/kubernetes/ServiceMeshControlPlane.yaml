@@ -16,10 +16,5 @@ spec:
     prometheus:
       enabled: true
   gateways:
-    ingress:
-      service:
-        type: ClusterIP
-        ports:
-          - name: http2
-            port: 9000
-            targetPort: 9000
+    openshiftRoute:
+      enabled: false

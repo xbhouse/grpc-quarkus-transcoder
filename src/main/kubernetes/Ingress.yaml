@@ -1,0 +1,23 @@
+kind: Ingress
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: public-ingress
+  namespace: istio-system
+  annotations:
+    route.openshift.io/termination: passthrough  # Must passthough to `Gateway`
+spec:
+#  tls:
+#    - hosts:
+#        - "grpc-grpc-testing.apps.cluster-bntzg.bntzg.sandbox1686.opentlc.com"
+#      secretName: tls-secret
+  rules:
+    - host: "grpc-grpc-testing.apps.cluster-bntzg.bntzg.sandbox1686.opentlc.com"
+      http:
+        paths:
+          - path: ''
+            pathType: ImplementationSpecific  # Required for passthrough
+            backend:
+              service:
+                name: istio-ingressgateway
+                port:
+                  number: 80 # must match ingress gateway service `port`

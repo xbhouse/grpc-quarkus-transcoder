@@ -6,7 +6,7 @@ spec:
   hosts:
   - "grpc-grpc-testing.apps.cluster-bntzg.bntzg.sandbox1686.opentlc.com"
   gateways:
-  - test-gateway
+  - istio-system/ingress-gateway
   http:
   - name: primary
     route:
