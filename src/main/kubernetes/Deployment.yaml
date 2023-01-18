@@ -21,18 +21,18 @@ spec:
       namespace: grpc-testing
     spec:
       containers:
-        - image: quay.io/bhouse/grpc-quarkus-transcoder:1.0.1
+        - image: quay.io/bhouse/grpc-quarkus-transcoder:1.0.2
           imagePullPolicy: Always
           name: hello
           ports:
             - containerPort: 9000
               name: grpc
               protocol: TCP
-          volumeMounts:
-            - name: tls
-              mountPath: /work/tls
-      volumes:
-        - name: tls
-          secret:
-            secretName: tls-secret
-            defaultMode: 420
+          #volumeMounts:
+          #  - name: tls
+          #    mountPath: /work/tls
+      #volumes:
+      #  - name: tls
+      #    secret:
+      #      secretName: tls-secret
+      #      defaultMode: 420
