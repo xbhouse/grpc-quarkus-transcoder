@@ -6,12 +6,12 @@ metadata:
   annotations:
     route.openshift.io/termination: passthrough  # Must passthough to `Gateway`
 spec:
-#  tls:
-#    - hosts:
-#        - "grpc-grpc-testing.apps.cluster-bntzg.bntzg.sandbox1686.opentlc.com"
-#      secretName: tls-secret
+  tls:
+    - hosts:
+        - "hello.grpc-testing.apps.cluster-2xm85.2xm85.sandbox705.opentlc.com"
+      secretName: tls-secret
   rules:
-    - host: "grpc-grpc-testing.apps.cluster-bntzg.bntzg.sandbox1686.opentlc.com"
+    - host: "hello.grpc-testing.apps.cluster-2xm85.2xm85.sandbox705.opentlc.com"
       http:
         paths:
           - path: ''
@@ -20,4 +20,4 @@ spec:
               service:
                 name: istio-ingressgateway
                 port:
-                  number: 80 # must match ingress gateway service `port`
+                  number: 9443 # must match ingress gateway service `port`

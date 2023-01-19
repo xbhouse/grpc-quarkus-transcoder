@@ -4,7 +4,7 @@ metadata:
   name: test-vs
 spec:
   hosts:
-  - "grpc-grpc-testing.apps.cluster-bntzg.bntzg.sandbox1686.opentlc.com"
+  - "hello.grpc-testing.apps.cluster-2xm85.2xm85.sandbox705.opentlc.com"
   gateways:
   - istio-system/ingress-gateway
   http:

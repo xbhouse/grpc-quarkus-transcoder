@@ -4,6 +4,9 @@ metadata:
   name: basic
   namespace: istio-system
 spec:
+  security:
+    dataPlane:
+      mtls: true
   addons:
     grafana:
       enabled: true
@@ -18,3 +21,13 @@ spec:
   gateways:
     openshiftRoute:
       enabled: false
+    ingress:
+      service:
+        type: ClusterIP
+        ports:
+          - name: http2
+            port: 9000
+            targetPort: 9000
+          - name: https
+            port: 9443
+            targetPort: 9443

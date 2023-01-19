@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: hello
+    app.kubernetes.io/version: "1.0"
+  name: hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hello
+      app.kubernetes.io/version: "1.0"
+  template:
+    metadata:
+      annotations:
+        sidecar.istio.io/inject: "true"
+      labels:
+        app.kubernetes.io/name: hello
+        app.kubernetes.io/version: "1.0"
+    spec:
+      containers:
+        - image: quay.io/bhouse/grpc-quarkus-transcoder:1.0.1
+          imagePullPolicy: Always
+          name: hello
+          ports:
+            - containerPort: 9000
+              name: grpc
+              protocol: TCP
+          volumeMounts:
+            - name: tls
+              mountPath: /work/tls
+      volumes:
+        - name: tls
+          secret:
+            secretName: tls-secret
+            defaultMode: 420
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.kubernetes.io/name: hello
+    app.kubernetes.io/version: "1.0"
+  name: hello
+spec:
+  ports:
+    - name: grpc
+      port: 9000
+      targetPort: 9000
+  selector:
+    app.kubernetes.io/name: hello
+    app.kubernetes.io/version: "1.0"
+  type: ClusterIP
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: grpc
+  labels:
+    app.kubernetes.io/name: hello
+    app.kubernetes.io/version: '1.0'
+spec:
+  to:
+    kind: Service
+    name: hello
+    weight: 100
+  port:
+    targetPort: grpc
+  tls:
+    termination: passthrough
+  wildcardPolicy: None
