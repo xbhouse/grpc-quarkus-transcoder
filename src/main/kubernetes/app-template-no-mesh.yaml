@@ -52,21 +52,3 @@ spec:
     app.kubernetes.io/name: hello
     app.kubernetes.io/version: "1.0"
   type: ClusterIP
----
-kind: Route
-apiVersion: route.openshift.io/v1
-metadata:
-  name: grpc
-  labels:
-    app.kubernetes.io/name: hello
-    app.kubernetes.io/version: '1.0'
-spec:
-  to:
-    kind: Service
-    name: hello
-    weight: 100
-  port:
-    targetPort: grpc
-  tls:
-    termination: passthrough
-  wildcardPolicy: None
