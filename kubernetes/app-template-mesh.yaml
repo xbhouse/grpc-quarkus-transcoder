@@ -20,7 +20,7 @@ spec:
         app.kubernetes.io/version: "1.0"
     spec:
       containers:
-        - image: quay.io/bhouse/grpc-quarkus-transcoder:1.0.2
+        - image: <your-app-image>
           imagePullPolicy: Always
           name: hello
           ports:
