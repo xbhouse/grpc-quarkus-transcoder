@@ -1,4 +1,4 @@
-# Manifests for configuring gRPC on OpenShift with RHOSSM (Istio)
+# Manifests for configuring a gRPC-REST transcoder on OpenShift with RHOSSM / Istio
 
 Run the following commands:
 
